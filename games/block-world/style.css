@@ -1,0 +1,261 @@
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  background: #000;
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+  user-select: none;
+}
+
+/* ===== GAME CANVAS ===== */
+#game-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#game-canvas canvas {
+  display: block;
+}
+
+/* ===== CROSSHAIR ===== */
+#crosshair {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+#crosshair::before,
+#crosshair::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Vertical bar */
+#crosshair::before {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+/* Horizontal bar */
+#crosshair::after {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+/* ===== HUD ===== */
+#hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#hud-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#fly-label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffff55;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  letter-spacing: 1px;
+}
+
+#pause-btn {
+  pointer-events: all;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#pause-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* ===== CONTROLS INFO ===== */
+#controls-info {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* ===== INVENTORY ===== */
+#inventory {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+
+.inv-slot {
+  width: 54px;
+  height: 54px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  pointer-events: all;
+  transition: border-color 0.1s, background 0.1s;
+}
+
+.inv-slot.active {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.inv-slot:hover {
+  border-color: rgba(255,255,255,0.7);
+}
+
+.slot-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+}
+
+.grass-color {
+  background: linear-gradient(to bottom, #5a9e3a 40%, #8B6325 40%);
+}
+
+.dirt-color {
+  background: #8B6325;
+}
+
+.stone-color {
+  background: #888;
+}
+
+/* ===== PAUSE MENU ===== */
+#pause-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  z-index: 50;
+}
+
+#pause-menu h1 {
+  font-size: 40px;
+  letter-spacing: 6px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+#resume-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #fff;
+  padding: 13px 36px;
+  font-family: inherit;
+  font-size: 18px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.15s;
+}
+
+#resume-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.pause-controls {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  line-height: 2;
+}
+
+/* ===== START OVERLAY ===== */
+#start-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 60;
+  cursor: pointer;
+}
+
+#start-overlay h1 {
+  font-size: 52px;
+  letter-spacing: 8px;
+  text-shadow: 0 0 30px rgba(100, 200, 100, 0.6);
+  color: #aef56a;
+}
+
+#start-overlay p {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 2px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
