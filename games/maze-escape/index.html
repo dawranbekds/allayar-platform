@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maze Escape</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- INTRO -->
+  <div id="intro-screen" class="screen active">
+    <div id="intro-text">Thanks for playing</div>
+  </div>
+
+  <!-- START -->
+  <div id="start-screen" class="screen">
+    <div class="menu-box">
+      <h1 class="game-title">MAZE ESCAPE</h1>
+      <p class="subtitle">Find the key. Survive the maze.<br>Defeat the boss.</p>
+      <div class="controls-hint">WASD / Arrows · SPACE to attack</div>
+      <button id="play-btn" class="pixel-btn">▶ PLAY</button>
+    </div>
+  </div>
+
+  <!-- GAME -->
+  <div id="game-screen" class="screen">
+
+    <!-- HUD TOP -->
+    <div id="hud">
+      <div id="inventory-panel">
+        <span class="hud-label">INV</span>
+        <div id="inv-key" class="inv-slot" title="Key">
+          <span class="inv-icon">🗝</span>
+          <span class="inv-count" id="key-count">0</span>
+        </div>
+        <div id="inv-gem" class="inv-slot" title="Gem">
+          <span class="inv-icon">💎</span>
+          <span class="inv-count" id="gem-count">0</span>
+        </div>
+      </div>
+
+      <div id="player-hp-panel">
+        <span class="hud-label">HP</span>
+        <span id="player-hearts">❤️❤️❤️</span>
+      </div>
+
+      <div id="status-panel">
+        <span id="key-status">🗝 Find the key!</span>
+      </div>
+
+      <div id="level-indicator">
+        <span class="hud-label">STAGE</span>
+        <span id="level-num">1</span>
+      </div>
+
+      <button id="pause-btn" class="pixel-btn small">⏸</button>
+    </div>
+
+    <!-- BOSS HP BAR (hidden until boss fight) -->
+    <div id="boss-hp-container" style="display:none">
+      <span class="boss-hp-label">☠ BOSS</span>
+      <div id="boss-hp-track">
+        <div id="boss-hp-fill"></div>
+      </div>
+    </div>
+
+    <!-- CANVAS -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HIT FLASH OVERLAY -->
+    <div id="hit-flash"></div>
+
+    <!-- MOBILE CONTROLS -->
+    <div id="mobile-controls">
+      <div id="dpad">
+        <button class="dpad-btn" id="btn-up">▲</button>
+        <div class="dpad-mid">
+          <button class="dpad-btn" id="btn-left">◄</button>
+          <div class="dpad-center"></div>
+          <button class="dpad-btn" id="btn-right">►</button>
+        </div>
+        <button class="dpad-btn" id="btn-down">▼</button>
+      </div>
+      <button class="dpad-btn attack-btn" id="btn-attack">⚔</button>
+    </div>
+  </div>
+
+  <!-- LEVEL BANNER -->
+  <div id="level-banner" class="screen overlay banner-overlay">
+    <div id="banner-stage"></div>
+    <div id="banner-title"></div>
+    <div id="banner-sub"></div>
+  </div>
+
+  <!-- PAUSE -->
+  <div id="pause-screen" class="screen overlay">
+    <div class="menu-box">
+      <h2>PAUSED</h2>
+      <button id="resume-btn" class="pixel-btn">▶ RESUME</button>
+      <button id="restart-pause-btn" class="pixel-btn secondary">↺ RESTART</button>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div id="gameover-screen" class="screen overlay">
+    <div class="menu-box">
+      <h2 class="red">YOU DIED</h2>
+      <p id="gameover-reason">The darkness consumed you...</p>
+      <button id="restart-btn" class="pixel-btn">↺ TRY AGAIN</button>
+    </div>
+  </div>
+
+  <!-- WIN -->
+  <div id="win-screen" class="screen overlay">
+    <div class="menu-box">
+      <h2 class="gold">✦ VICTORY ✦</h2>
+      <p>The boss is defeated!<br>You escaped the maze!</p>
+      <button id="next-btn" class="pixel-btn">↺ PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
