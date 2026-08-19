@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block Craft</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Canvas container -->
+  <div id="game-canvas"></div>
+
+  <!-- Crosshair -->
+  <div id="crosshair"></div>
+
+  <!-- Top HUD -->
+  <div id="hud">
+    <div id="hud-left">
+      <div id="fly-label"></div>
+    </div>
+    <button id="pause-btn">&#9646;&#9646; Pause</button>
+  </div>
+
+  <!-- Controls hint -->
+  <div id="controls-info">
+    WASD: Move &nbsp;|&nbsp; Space: Jump &nbsp;|&nbsp; F: Fly &nbsp;|&nbsp;
+    LMB: Break &nbsp;|&nbsp; RMB: Place &nbsp;|&nbsp; 1-3 / Scroll: Block type
+  </div>
+
+  <!-- Inventory bar -->
+  <div id="inventory">
+    <div class="inv-slot active" data-index="0">
+      <div class="slot-color grass-color"></div>
+      <span>Grass</span>
+    </div>
+    <div class="inv-slot" data-index="1">
+      <div class="slot-color dirt-color"></div>
+      <span>Dirt</span>
+    </div>
+    <div class="inv-slot" data-index="2">
+      <div class="slot-color stone-color"></div>
+      <span>Stone</span>
+    </div>
+  </div>
+
+  <!-- Pause menu -->
+  <div id="pause-menu">
+    <h1>PAUSED</h1>
+    <button id="resume-btn">RESUME</button>
+    <div class="pause-controls">
+      WASD &mdash; Move &nbsp;&nbsp; Space &mdash; Jump &nbsp;&nbsp; F &mdash; Fly toggle<br>
+      Left Click &mdash; Break block &nbsp;&nbsp; Right Click &mdash; Place block<br>
+      1 / 2 / 3 or Scroll &mdash; Select block type &nbsp;&nbsp; ESC &mdash; Pause
+    </div>
+  </div>
+
+  <!-- Click-to-start overlay -->
+  <div id="start-overlay">
+    <h1>BLOCK CRAFT</h1>
+    <p>Click anywhere to play</p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
