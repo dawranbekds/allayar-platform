@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Game Platform</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 36px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 60px 20px;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: #2b2b45;
+      border-radius: 15px;
+      padding: 20px;
+      width: 260px;
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .card:hover {
+      transform: scale(1.05);
+      background: #3c3c65;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #ff9800;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #ffa726;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 My Game Platform</h1>
+  <p>Choose a game and start playing!</p>
+
+  <div class="container">
+    <div class="card">
+      <h2>⭐ Star Catcher</h2>
+      <p>Collect stars and avoid enemies.</p>
+      <button onclick="location.href='/star-catcher/'">Play</button>
+    </div>
+
+    <div class="card">
+      <h2>🧩 Maze Escape</h2>
+      <p>Find the key and escape the maze.</p>
+      <button onclick="location.href='/maze-escape/'">Play</button>
+    </div>
+
+    <div class="card">
+      <h2>🧱 Block World 3D</h2>
+      <p>Break and place blocks in a 3D world.</p>
+      <button onclick="location.href='/block-world/'">Play</button>
+    </div>
+  </div>
+</body>
+</html>
