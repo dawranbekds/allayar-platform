@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Star Catcher</title>
+  <link rel="stylesheet" href="styles/game.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── HUD (always visible during gameplay) ── -->
+    <div id="hud">
+      <span id="level-display">Level 1</span>
+      <span id="score-display">Score: 0</span>
+      <div class="hud-buttons">
+        <button id="chat-btn"  aria-label="Chat">💬</button>
+        <button id="mute-btn"  aria-label="Mute">🔊</button>
+        <button id="pause-btn" aria-label="Pause">⏸</button>
+      </div>
+    </div>
+
+    <!-- ── Game Canvas ── -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- ── Mobile Controls: D-Pad + Fire Button ── -->
+    <div id="mobile-controls" aria-label="Directional controls">
+      <div class="controls-layout">
+
+        <!-- D-Pad -->
+        <div class="dpad">
+          <button class="dpad-btn" id="btn-up"    aria-label="Up">▲</button>
+          <div class="dpad-middle">
+            <button class="dpad-btn" id="btn-left"  aria-label="Left">◀</button>
+            <div class="dpad-center"></div>
+            <button class="dpad-btn" id="btn-right" aria-label="Right">▶</button>
+          </div>
+          <button class="dpad-btn" id="btn-down"  aria-label="Down">▼</button>
+        </div>
+
+        <!-- Fire Button -->
+        <button id="btn-fire" class="fire-btn" aria-label="Shoot">🔥</button>
+
+      </div>
+    </div>
+
+    <!-- ══════════ OVERLAY SCREENS ══════════ -->
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="overlay" role="dialog" aria-label="Start Screen">
+      <div class="overlay-content">
+        <div class="game-title">⭐ Star Catcher</div>
+        <p class="subtitle">Collect stars, dodge enemies!</p>
+        <div class="instructions">
+          <span>⬆⬇⬅➡ / WASD — move &nbsp;|&nbsp; Space / Click — shoot</span>
+        </div>
+        <button id="play-btn" class="btn-primary">▶ Play</button>
+      </div>
+    </div>
+
+    <!-- Story Screen (level intros) -->
+    <div id="story-screen" class="overlay story-overlay hidden" role="dialog" aria-label="Story">
+      <div class="story-content">
+        <div id="story-emoji"   class="story-emoji"></div>
+        <div id="story-chapter" class="story-chapter"></div>
+        <div id="story-title"   class="story-title"></div>
+        <p   id="story-text"    class="story-text"></p>
+        <button id="story-continue-btn" class="btn-primary">Continue →</button>
+        <span class="story-hint">tap anywhere to continue</span>
+      </div>
+    </div>
+
+    <!-- Pause Screen -->
+    <div id="pause-screen" class="overlay hidden" role="dialog" aria-label="Paused">
+      <div class="overlay-content">
+        <div class="overlay-icon">⏸</div>
+        <div class="overlay-title">Paused</div>
+        <button id="resume-btn" class="btn-primary">▶ Resume</button>
+        <button id="restart-from-pause-btn" class="btn-secondary">↺ Restart</button>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameover-screen" class="overlay hidden" role="dialog" aria-label="Game Over">
+      <div class="overlay-content">
+        <div class="overlay-icon">💫</div>
+        <div class="overlay-title">Game Over!</div>
+        <p id="final-score" class="final-score-text">Score: 0</p>
+        <p class="thanks-msg">Thanks for playing :D</p>
+        <button id="restart-btn" class="btn-primary">↺ Play Again</button>
+      </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory-screen" class="overlay victory-overlay hidden" role="dialog" aria-label="Victory">
+      <div class="overlay-content victory-content">
+        <div class="victory-badge">🏆</div>
+        <div class="victory-title">You Saved<br>the Galaxy!</div>
+        <p class="victory-story">
+          The shadow monsters are defeated forever!<br>
+          The stars shine bright across the universe!<br>
+          <strong>You are the greatest Star Champion of all time!</strong> 🌟
+        </p>
+        <p id="victory-score" class="victory-score-text">Final Score: 0</p>
+        <button id="victory-play-again-btn" class="btn-primary">↺ Play Again</button>
+      </div>
+    </div>
+
+    <!-- ── Chat Panel (slide-up) ── -->
+    <div id="chat-panel" class="chat-panel hidden" role="dialog" aria-label="Chat">
+      <div class="chat-header">
+        <span>💬 Chat</span>
+        <span id="chat-username-display" class="chat-username-display"></span>
+        <button id="chat-close-btn" class="chat-close-btn" aria-label="Yopish">✕</button>
+      </div>
+      <div id="chat-messages" class="chat-messages"></div>
+      <div class="chat-input-row">
+        <input id="chat-input" type="text" placeholder="Xabar yozing..." maxlength="200" autocomplete="off" enterkeyhint="send" />
+        <button id="chat-send-btn" aria-label="Yuborish">➤</button>
+      </div>
+    </div>
+
+  </div><!-- /#app -->
+
+  <script src="js/game.js"></script>
+</body>
+</html>
